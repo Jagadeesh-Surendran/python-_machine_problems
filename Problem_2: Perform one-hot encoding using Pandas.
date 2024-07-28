@@ -1,0 +1,23 @@
+import pandas as pd
+
+# Sample data
+data = {'Color': ['Red', 'Blue', 'Green', 'Blue', 'Red']}
+df = pd.DataFrame(data)
+
+# One-hot encoding
+one_hot = pd.get_dummies(df['Color'])
+df = df.join(one_hot)
+
+print(df)
+
+#Sample_Output
+
+   Color   Blue  Green    Red
+0    Red  False  False   True
+1   Blue   True  False  False
+2  Green  False   True  False
+3   Blue   True  False  False
+4    Red  False  False   True
+
+
+
