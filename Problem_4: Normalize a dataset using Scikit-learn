@@ -1,0 +1,19 @@
+Problem: Normalize a dataset using Scikit-learn.
+
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+
+# Sample data
+X = np.array([[1, 2], [3, 4], [5, 6]])
+
+# Normalize the data
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+print(X_scaled)
+
+#Sample_Output:
+
+[[-1.22474487 -1.22474487]
+ [ 0.          0.        ]
+ [ 1.22474487  1.22474487]]
