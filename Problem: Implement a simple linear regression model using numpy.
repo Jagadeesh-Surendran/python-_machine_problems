@@ -1,0 +1,33 @@
+import numpy as np
+
+# Sample data
+X = np.array([1, 2, 3, 4, 5])
+y = np.array([2, 4, 6, 8, 10])
+
+# Calculate coefficients
+
+X_mean = np.mean(X)
+y_mean = np.mean(y)
+numerator = np.sum((X - X_mean) * (y - y_mean))
+denominator = np.sum((X - X_mean)**2)
+slope = numerator / denominator
+intercept = y_mean - slope * X_mean
+
+# Predict function
+def predict(X):
+    return slope * X + intercept
+
+# Test the prediction
+print(predict(np.array([6, 7])))
+
+
+#sample output:
+   [12. 14.]
+
+#Try your self for input the new array
+
+#for example:
+X = np.array([1, 2, 6, 8, 12,1])
+y = np.array([2, 4, 6, 9, 8,18])
+
+#try this array for example
