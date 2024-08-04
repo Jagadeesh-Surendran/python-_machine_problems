@@ -1,0 +1,41 @@
+Problem No.8:
+  Use GridSearchCV to find the best hyperparameters for a Support Vector Machine (SVM) model
+
+
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import GridSearchCV
+from sklearn.svm import SVC
+
+# Load dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Define parameter grid
+param_grid = {'C': [0.1, 1, 10], 'kernel': ['linear', 'rbf']}
+
+# Perform GridSearchCV
+grid = GridSearchCV(SVC(), param_grid, refit=True, verbose=2)
+grid.fit(X, y)
+
+print(f'Best Parameters: {grid.best_params_}')
+print(f'Best Estimator: {grid.best_estimator_}')
+
+
+#sample Output:
+
+Fitting 5 folds for each of 6 candidates, totalling 30 fits
+[Parallel(n_jobs=1)]: Using backend SequentialBackend with 1 concurrent workers.
+[CV] C=0.1, kernel=linear ...........................................
+[CV] .................. C=0.1, kernel=linear, score=0.966667 -   0.0s
+[CV] C=0.1, kernel=linear ...........................................
+[CV] .................. C=0.1, kernel=linear, score=1.000000 -   0.0s
+...
+[CV] C=10, kernel=rbf ................................................
+[CV] ..................... C=10, kernel=rbf, score=0.966667 -   0.0s
+[CV] C=10, kernel=rbf ................................................
+[CV] ..................... C=10, kernel=rbf, score=1.000000 -   0.0s
+...
+Best Parameters: {'C': 1, 'kernel': 'linear'}
+Best Estimator: SVC(C=1, kernel='linear')
