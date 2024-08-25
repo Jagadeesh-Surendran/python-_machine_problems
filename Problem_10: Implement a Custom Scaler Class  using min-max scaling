@@ -1,0 +1,47 @@
+Problem_10: Implement a Custom Scaler Class  using min-max scaling 
+
+class MinMaxScaler:
+    def fit(self, X):
+        self.min = X.min(axis=0)
+        self.max = X.max(axis=0)
+
+    def transform(self, X):
+        return (X - self.min) / (self.max - self.min)
+
+    def fit_transform(self, X):
+        self.fit(X)
+        return self.transform(X)
+
+# Example usage:
+# scaler = MinMaxScaler()
+# X_scaled = scaler.fit_transform(X)
+
+#SAMPLE_INPUT:
+
+import numpy as np
+
+# Sample dataset
+X = np.array([[1, 2],
+              [2, 3],
+              [3, 4],
+              [4, 5]])
+
+# Using the MinMaxScaler
+scaler = MinMaxScaler()
+X_scaled = scaler.fit_transform(X)
+
+print("Original Data:\n", X)
+print("Scaled Data:\n", X_scaled)
+
+#SAMPLE_OUTPUT:
+
+Original Data:
+ [[1 2]
+  [2 3]
+  [3 4]
+  [4 5]]
+Scaled Data:
+ [[0.   0.  ]
+  [0.33 0.33]
+  [0.67 0.67]
+  [1.   1.  ]]
